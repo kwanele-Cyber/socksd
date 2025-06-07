@@ -1,5 +1,5 @@
 # Socksd
-this is a Socks4/5 proxy server implementayion in C
+this is a Socks4/5 proxy server implementation in C
 
 ## How to use
 1. first clone this repository
