@@ -11,22 +11,26 @@ int srv_init(int port){
     int s;
     struct sockaddr_in srv;
 
+    /*create a server socket*/
     s = socket(AF_INET, SOCK_STREAM, 0);
     if (s < 0){
         error = "socket() error";
         return 0;
     }
 
+    /*convert listerning address and port into bytes*/
     srv.sin_family = AF_INET;
     srv.sin_addr.s_addr = inet_addr(LISTERNADDR);
     srv.sin_port = htons(port);
 
+    /*bind socket*/
     if(bind(s, (struct sockaddr *)&srv, sizeof(srv))){
 	error = "bind() error";
         close(s);
         return 0;
     }
 
+    /*listen*/
     if(listen(s, 5)){
 	close(s);
 	error = "listen() error";
@@ -49,7 +53,7 @@ int cli_acccept(int sockfd){
     return client;
 }
 
-/**/
+/*do communication with client*/
 int cli_conn(int serverfd, int clientfd)
 {
     return 0;
